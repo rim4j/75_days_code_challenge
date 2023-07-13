@@ -20,25 +20,29 @@
 // Output: false
 
 void main(List<String> arguments) {
-  bool result = isValid("{[(())]}");
+  bool result = isValid("[}{}]");
   print(result);
 }
 
 bool isValid(String s) {
-  String d1 = "()";
-  String d2 = "{}";
-  String d3 = "[]";
+  String a = "()";
+  String b = "{}";
+  String c = "[]";
 
-  while (s.isNotEmpty) {
-    if (s.contains(d1)) {
-      s = s.replaceAll(d1, '');
-    } else if (s.contains(d2)) {
-      s = s.replaceAll(d2, '');
-    } else if (s.contains(d3)) {
-      s = s.replaceAll(d3, '');
-    } else {
-      return false;
+  if (s.isEmpty) {
+    return false;
+  } else {
+    while (s.isNotEmpty) {
+      if (s.contains(a)) {
+        s = s.replaceAll(a, '');
+      } else if (s.contains(b)) {
+        s = s.replaceAll(b, '');
+      } else if (s.contains(c)) {
+        s = s.replaceAll(c, '');
+      } else {
+        return false;
+      }
     }
+    return true;
   }
-  return true;
 }
